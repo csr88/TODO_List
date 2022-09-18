@@ -1,0 +1,73 @@
+{% extends 'core/base.html' %} {% block content%}
+
+<div class="container">
+  <form method="post">
+    {% csrf_token%}
+    <div style="margin:100px;border:2px solid #e3f2fd; padding:20px;width:50%;alignItem:center">
+    <h2>Register</h2>
+    <div class="form-group">
+      <label for="firstname">First Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="firstname"
+        name="firstname"
+        placeholder="Enter your firstname"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="lastname">Last Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="lastname"
+        name="lastname"
+        placeholder="Enter your lastname"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        name="email"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        placeholder="Enter email"
+        placeholder="Enter your email address"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input
+        type="text"
+        class="form-control"
+        id="username"
+        name="username"
+        placeholder="Enter your Username"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="exampleInputPassword1"
+        placeholder="Enter your Password"
+        name="password"
+        required
+      />
+    </div>
+    
+    <button type="Register" class="btn btn-primary">Register</button>
+    <div>
+      Already have an account? <a href="{% url 'login'%}">Login</a></small>
+      </div>
+  </form>
+</div>
+</div>
+{% endblock content%}

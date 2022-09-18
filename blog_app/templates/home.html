@@ -1,0 +1,68 @@
+{% extends "core/base.html"%} {% block title%}Home{% endblock title%}
+{%block content%}
+<div class="container">
+  <div class="jumbotron" style="background-color: #e3f2fd; margin-top: 10px;">
+    <h1 style="text-align: center; font-weight: 900">ToDo App</h1>
+    <hr />
+    {% for todo in todos%}
+    <div style="border: 3px solid white; padding: 20px">
+      {% if todo.completed%}
+
+      <del> <h3 style="text-align: center; color: blue">{{todo.title}}</h3></del>
+      <del
+        ><p style="text-align: center; font-size: 14px; color: blue; font-style: italic; font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">
+          {{todo.description}}
+        </p>
+      </del>
+      {% else%}
+      <h3 style="text-align: center; color: black; font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">{{todo.title}}</h3>
+      <p style="text-align: center; font-size: 14px; font-style: italic; color: black">
+        {{todo.description}}
+      </p>
+      {% endif%}
+      <p style="text-align: center; font-size: 12px">{{todo.created_at}}</p>
+
+      <div style="display: flex; justify-content: center">
+        <a
+          href="{% url 'edit' id=todo.id %}"
+          style="margin-right: 20px"
+          class="btn btn-success"
+        >
+          Edit
+        </a>
+        <a
+          style="margin-right: 20px"
+          href="{% url 'delete' id=todo.id %}"
+          class="btn btn-danger"
+          >Delete</a
+        >
+        {% if todo.completed %}
+        <a href="{% url 'mark-complete' id=todo.id %}" class="btn btn-primary">
+          Mark as incomplete
+        </a>
+        {% else%}
+        <a href="{% url 'mark-complete' id=todo.id %}" class="btn btn-primary">
+          Mark as complete
+        </a>
+        {% endif%}
+      </div>
+    
+    </div>
+    <hr />
+    {% endfor%}
+    <div style="display: flex; justify-content: center">
+      <a href="{%  url 'add' %}"
+        ><button type="button" class="btn btn-primary">Add ToDo</button></a
+      >
+      {% if todos %}
+      <a
+        style="margin-left: 10px"
+        href="{% url 'delete-all'%}"
+        class="btn btn-danger"
+        >Delete All</a
+      >
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock content%}

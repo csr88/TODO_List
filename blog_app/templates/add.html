@@ -1,0 +1,30 @@
+{% extends "core/base.html"%} {% block title%}Todo | Add {% endblock title%}
+{%block content%}
+<div class="container">
+  <div class="jumbotron" style="background-color: #e3f2fd; margin-top: 10px;">
+    <h2 style="border-bottom: 2px solid skyblue; text-align: center">
+      Adding New Task
+    </h2>
+    <form method="POST">
+      {% csrf_token %}
+      <div class="form-group">
+        <label style="font-size: 25px" for="title" >Title</label>
+        <input type="text" class="form-control" id="title" name="title" placeholder="Enter your task title" />
+      </div>
+      <div class="form-group">
+        <label style="font-size: 25px" for="description"
+          >Description</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="description"
+          name="description"
+          placeholder="Enter your task description"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>
+{% endblock content%}
